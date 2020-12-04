@@ -2,9 +2,9 @@
 #include<malloc.h>
 #include<ctype.h>
 #include<locale.h>
-int num = 0; //Индекс элемента в массиве words
+int num = 0; //Г€Г­Г¤ГҐГЄГ± ГЅГ«ГҐГ¬ГҐГ­ГІГ  Гў Г¬Г Г±Г±ГЁГўГҐ words
 int len = 0;
-char* words; //Массив символов(содержит найденные симметричные слова) 
+char* words; //ГЊГ Г±Г±ГЁГў Г±ГЁГ¬ГўГ®Г«Г®Гў(Г±Г®Г¤ГҐГ°Г¦ГЁГІ Г­Г Г©Г¤ГҐГ­Г­Г»ГҐ Г±ГЁГ¬Г¬ГҐГІГ°ГЁГ·Г­Г»ГҐ Г±Г«Г®ГўГ ) 
 //int bb;
 int yy;
 void addLetter(char );
@@ -27,8 +27,8 @@ int main() {
 	k++;
 	yy = k;
 	fflush(stdin);
-	for (w = 1; w <=n1; w++) {//для движения по матрицам
-		str = (char**)malloc(n * sizeof(char*));//для создания двумерной динамической матрицы
+	for (w = 1; w <=n1; w++) {//Г¤Г«Гї Г¤ГўГЁГ¦ГҐГ­ГЁГї ГЇГ® Г¬Г ГІГ°ГЁГ¶Г Г¬
+		str = (char**)malloc(n * sizeof(char*));//Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї Г¤ГўГіГ¬ГҐГ°Г­Г®Г© Г¤ГЁГ­Г Г¬ГЁГ·ГҐГ±ГЄГ®Г© Г¬Г ГІГ°ГЁГ¶Г»
 		if (!(str = (char**)malloc(n * sizeof(char*))))
 			return 0;
 		g = w;
@@ -41,19 +41,19 @@ int main() {
 				return 0;
 			}
 			for (j = 0; j < m; j++) {
-				xx = &str[i][j];//присваиваю указателю адрес элемента(и так много раз)
-				xx = (char*)malloc(k * sizeof(char));//делаю динамический массив по этому указателю
+				xx = &str[i][j];//ГЇГ°ГЁГ±ГўГ ГЁГўГ Гѕ ГіГЄГ Г§Г ГІГҐГ«Гѕ Г Г¤Г°ГҐГ± ГЅГ«ГҐГ¬ГҐГ­ГІГ (ГЁ ГІГ ГЄ Г¬Г­Г®ГЈГ® Г°Г Г§)
+				xx = (char*)malloc(k * sizeof(char));//Г¤ГҐГ«Г Гѕ Г¤ГЁГ­Г Г¬ГЁГ·ГҐГ±ГЄГЁГ© Г¬Г Г±Г±ГЁГў ГЇГ® ГЅГІГ®Г¬Гі ГіГЄГ Г§Г ГІГҐГ«Гѕ
 				if (!(xx = (char*)malloc(k * sizeof(char)))) {
 					free(xx);
 					return 0;
 				}
 				getchar();
-				fgets(xx,k,stdin);//ввожу строку для этого элемента матрицы(указателя)
+				fgets(xx,k,stdin);//ГўГўГ®Г¦Гі Г±ГІГ°Г®ГЄГі Г¤Г«Гї ГЅГІГ®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г¬Г ГІГ°ГЁГ¶Г»(ГіГЄГ Г§Г ГІГҐГ«Гї)
 				//getchar();
 				fflush(stdin);
 				z = 0;
 				while(xx[z]!='\0'&&xx[z]!='\n') {
-					if (xx[z] == ' ') {//если пробел-избавляюсь от пробелов до буквы
+					if (xx[z] == ' ') {//ГҐГ±Г«ГЁ ГЇГ°Г®ГЎГҐГ«-ГЁГ§ГЎГ ГўГ«ГїГѕГ±Гј Г®ГІ ГЇГ°Г®ГЎГҐГ«Г®Гў Г¤Г® ГЎГіГЄГўГ»
 						while (xx[z] == ' ') {
 							kol1++;
 							z++;
@@ -61,34 +61,34 @@ int main() {
 								break;
 						}
 					}
-					if (xx[z] != ' '&&xx[z]!='\0'&&xx[z]!='\n') {//нашел букву-поехали считать сколько их в слове
+					if (xx[z] != ' '&&xx[z]!='\0'&&xx[z]!='\n') {//Г­Г ГёГҐГ« ГЎГіГЄГўГі-ГЇГ®ГҐГµГ Г«ГЁ Г±Г·ГЁГІГ ГІГј Г±ГЄГ®Г«ГјГЄГ® ГЁГµ Гў Г±Г«Г®ГўГҐ
 						r = z;
 						bb = r;
 						er = bb;
-						while (xx[z] != ' '&&xx[z]!='\0'&&xx[z]!='\n') {//сколько букв??
+						while (xx[z] != ' '&&xx[z]!='\0'&&xx[z]!='\n') {//Г±ГЄГ®Г«ГјГЄГ® ГЎГіГЄГў??
 							kol++;
 							z++;
 						}
 
-						if (kol > 2) {//интересуюсь словами большими чем 3 буквы
+						if (kol > 2) {//ГЁГ­ГІГҐГ°ГҐГ±ГіГѕГ±Гј Г±Г«Г®ГўГ Г¬ГЁ ГЎГ®Г«ГјГёГЁГ¬ГЁ Г·ГҐГ¬ 3 ГЎГіГЄГўГ»
 
-							if (kol>2&&kol % 2 == 0) {//условие для слов с четеным количеством букв
-								end1 = r + kol - 1;//конец слова
+							if (kol>2&&kol % 2 == 0) {//ГіГ±Г«Г®ГўГЁГҐ Г¤Г«Гї Г±Г«Г®Гў Г± Г·ГҐГІГҐГ­Г»Г¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ®Г¬ ГЎГіГЄГў
+								end1 = r + kol - 1;//ГЄГ®Г­ГҐГ¶ Г±Г«Г®ГўГ 
 								while (status == 0) {
 									if (xx[r] != xx[end1]) {
 										kol = 0;
 										break;
 									}										
-									if (xx[r] == xx[end1]) {//проверка соотвествующих букв 
-										r++;//сдвигаю с левого края слова
-										end1--;//сдвиг с правого края слова
-										if (r + 1 == end1 && xx[r] == xx[end1]) {//если по индексу и по значению уже граница и значения равны-подтверждение нужного слова
-											if (status == 0) { //Копируем слово циклом в другой массив(words) и выводим его 
+									if (xx[r] == xx[end1]) {//ГЇГ°Г®ГўГҐГ°ГЄГ  Г±Г®Г®ГІГўГҐГ±ГІГўГіГѕГ№ГЁГµ ГЎГіГЄГў 
+										r++;//Г±Г¤ГўГЁГЈГ Гѕ Г± Г«ГҐГўГ®ГЈГ® ГЄГ°Г Гї Г±Г«Г®ГўГ 
+										end1--;//Г±Г¤ГўГЁГЈ Г± ГЇГ°Г ГўГ®ГЈГ® ГЄГ°Г Гї Г±Г«Г®ГўГ 
+										if (r + 1 == end1 && xx[r] == xx[end1]) {//ГҐГ±Г«ГЁ ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі ГЁ ГЇГ® Г§Г­Г Г·ГҐГ­ГЁГѕ ГіГ¦ГҐ ГЈГ°Г Г­ГЁГ¶Г  ГЁ Г§Г­Г Г·ГҐГ­ГЁГї Г°Г ГўГ­Г»-ГЇГ®Г¤ГІГўГҐГ°Г¦Г¤ГҐГ­ГЁГҐ Г­ГіГ¦Г­Г®ГЈГ® Г±Г«Г®ГўГ 
+											if (status == 0) { //ГЉГ®ГЇГЁГ°ГіГҐГ¬ Г±Г«Г®ГўГ® Г¶ГЁГЄГ«Г®Г¬ Гў Г¤Г°ГіГЈГ®Г© Г¬Г Г±Г±ГЁГў(words) ГЁ ГўГ»ГўГ®Г¤ГЁГ¬ ГҐГЈГ® 
 												for (bb; bb <= er + kol - 1; bb++) {
 													addLetter(xx[bb]);
 
 												}
-												addLetter(' '); //Добавляем пробел в массив words для читаемости 
+												addLetter(' '); //Г„Г®ГЎГ ГўГ«ГїГҐГ¬ ГЇГ°Г®ГЎГҐГ« Гў Г¬Г Г±Г±ГЁГў words Г¤Г«Гї Г·ГЁГІГ ГҐГ¬Г®Г±ГІГЁ 
 											}
 											po++;
 											status = 0;
@@ -100,9 +100,9 @@ int main() {
 							}
 
 
-							if (kol>2&&kol % 2 != 0) {//для нечетных слов
+							if (kol>2&&kol % 2 != 0) {//Г¤Г«Гї Г­ГҐГ·ГҐГІГ­Г»Гµ Г±Г«Г®Гў
 								end1 = r + kol - 1;
-								vv = kol / 2;//нахожу середину слова (с округлением)
+								vv = kol / 2;//Г­Г ГµГ®Г¦Гі Г±ГҐГ°ГҐГ¤ГЁГ­Гі Г±Г«Г®ГўГ  (Г± Г®ГЄГ°ГіГЈГ«ГҐГ­ГЁГҐГ¬)
 								cc = r;
 								while (status == 0) {
 									if (xx[r] != xx[end1]) {
@@ -111,11 +111,11 @@ int main() {
 									}
 									if (xx[r] == xx[end1]) {
 										if (kol == 3) {
-											if (status == 0) { //Копируем слово циклом в другой массив(words) и выводим его 
+											if (status == 0) { //ГЉГ®ГЇГЁГ°ГіГҐГ¬ Г±Г«Г®ГўГ® Г¶ГЁГЄГ«Г®Г¬ Гў Г¤Г°ГіГЈГ®Г© Г¬Г Г±Г±ГЁГў(words) ГЁ ГўГ»ГўГ®Г¤ГЁГ¬ ГҐГЈГ® 
 												for (bb; bb <= er + kol - 1; bb++) {
 													addLetter(xx[bb]);
 												}
-												addLetter(' '); //Добавляем пробел в массив words для читаемости 
+												addLetter(' '); //Г„Г®ГЎГ ГўГ«ГїГҐГ¬ ГЇГ°Г®ГЎГҐГ« Гў Г¬Г Г±Г±ГЁГў words Г¤Г«Гї Г·ГЁГІГ ГҐГ¬Г®Г±ГІГЁ 
 											}
 											kol = 0;
 											po++;
@@ -123,12 +123,12 @@ int main() {
 										}
 										r++;
 										end1--;
-										if (r + 1 ==cc+vv  && xx[r] == xx[end1]) {//провека по индексу приблизились к середине слова плюс равность индексов(например 3 и 5)
-											if (status == 0) { //Копируем слово циклом в другой массив(words) и выводим его 
+										if (r + 1 ==cc+vv  && xx[r] == xx[end1]) {//ГЇГ°Г®ГўГҐГЄГ  ГЇГ® ГЁГ­Г¤ГҐГЄГ±Гі ГЇГ°ГЁГЎГ«ГЁГ§ГЁГ«ГЁГ±Гј ГЄ Г±ГҐГ°ГҐГ¤ГЁГ­ГҐ Г±Г«Г®ГўГ  ГЇГ«ГѕГ± Г°Г ГўГ­Г®Г±ГІГј ГЁГ­Г¤ГҐГЄГ±Г®Гў(Г­Г ГЇГ°ГЁГ¬ГҐГ° 3 ГЁ 5)
+											if (status == 0) { //ГЉГ®ГЇГЁГ°ГіГҐГ¬ Г±Г«Г®ГўГ® Г¶ГЁГЄГ«Г®Г¬ Гў Г¤Г°ГіГЈГ®Г© Г¬Г Г±Г±ГЁГў(words) ГЁ ГўГ»ГўГ®Г¤ГЁГ¬ ГҐГЈГ® 
 												for (bb; bb <=er + kol - 1; bb++) {
 													addLetter(xx[bb]);
 												}
-												addLetter(' '); //Добавляем пробел в массив words для читаемости 
+												addLetter(' '); //Г„Г®ГЎГ ГўГ«ГїГҐГ¬ ГЇГ°Г®ГЎГҐГ« Гў Г¬Г Г±Г±ГЁГў words Г¤Г«Гї Г·ГЁГІГ ГҐГ¬Г®Г±ГІГЁ 
 											}
 											po++;
 											status = 0;
@@ -146,15 +146,15 @@ int main() {
 			}	
 		}
 	}
-	//printf("po==%d",po); для кол-ва таких слов
+	//printf("po==%d",po); Г¤Г«Гї ГЄГ®Г«-ГўГ  ГІГ ГЄГЁГµ Г±Г«Г®Гў
 	printf("\nYour arrange is- \n ");
 	for (int t = 0; t <len; ++t) {
 		printf("%c", words[t]);
 	}
 	return 0;
 }
-void addLetter(char sym) { //Функция для добавления символа в массив words 
-	words = (char*)realloc(words, ++len * sizeof(char));//len всегда увеличивается на 1 так как добавляю по 1 букве с цикла в int main
+void addLetter(char sym) { //Г”ГіГ­ГЄГ¶ГЁГї Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї Г±ГЁГ¬ГўГ®Г«Г  Гў Г¬Г Г±Г±ГЁГў words 
+	words = (char*)realloc(words, ++len * sizeof(char));//len ГўГ±ГҐГЈГ¤Г  ГіГўГҐГ«ГЁГ·ГЁГўГ ГҐГІГ±Гї Г­Г  1 ГІГ ГЄ ГЄГ ГЄ Г¤Г®ГЎГ ГўГ«ГїГѕ ГЇГ® 1 ГЎГіГЄГўГҐ Г± Г¶ГЁГЄГ«Г  Гў int main
 	if (!words) {
 		free(words);
 		return 0;
@@ -162,7 +162,7 @@ void addLetter(char sym) { //Функция для добавления символа в массив words
 
 	//char* tmp = (char*)realloc(words, ++len * sizeof(char));
 	/*if (tmp) {
-		words = tmp; //Увеличиваем размер массива words 
+		words = tmp; //Г“ГўГҐГ«ГЁГ·ГЁГўГ ГҐГ¬ Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ  words 
 		free(tmp);
 	}
 	else {
@@ -174,151 +174,7 @@ void addLetter(char sym) { //Функция для добавления символа в массив words
 	num++;
 
 }
-/*Дано n1 матриц. Размер матрицы n*m. Каждый элемент матрицы – строка знаков длинной k. Слова в предложении разделены одним или несколькими пробелами.
-Определить в каждом предложении количество слов, которые справа и слева читаются одинаково и записать их в массив.
+/*Г„Г Г­Г® n1 Г¬Г ГІГ°ГЁГ¶. ГђГ Г§Г¬ГҐГ° Г¬Г ГІГ°ГЁГ¶Г» n*m. ГЉГ Г¦Г¤Г»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ Г¬Г ГІГ°ГЁГ¶Г» вЂ“ Г±ГІГ°Г®ГЄГ  Г§Г­Г ГЄГ®Гў Г¤Г«ГЁГ­Г­Г®Г© k. Г‘Г«Г®ГўГ  Гў ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГЁ Г°Г Г§Г¤ГҐГ«ГҐГ­Г» Г®Г¤Г­ГЁГ¬ ГЁГ«ГЁ Г­ГҐГ±ГЄГ®Г«ГјГЄГЁГ¬ГЁ ГЇГ°Г®ГЎГҐГ«Г Г¬ГЁ.
+ГЋГЇГ°ГҐГ¤ГҐГ«ГЁГІГј Гў ГЄГ Г¦Г¤Г®Г¬ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГЁ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г«Г®Гў, ГЄГ®ГІГ®Г°Г»ГҐ Г±ГЇГ°Г ГўГ  ГЁ Г±Г«ГҐГўГ  Г·ГЁГІГ ГѕГІГ±Гї Г®Г¤ГЁГ­Г ГЄГ®ГўГ® ГЁ Г§Г ГЇГЁГ±Г ГІГј ГЁГµ Гў Г¬Г Г±Г±ГЁГў.
 */
 
-
-
-
-
-/*
-Вариант Арсения-
-#include <stdio.h> 
-#include <stdlib.h> 
-#include <locale.h> 
-
-char* words; //Массив символов(содержит найденные симметричные слова) 
-char** sentences;
-int num = 0; //Индекс элемента в массиве words 
-int len = 0; //Длина массива words (45 - самое большое слово в английском алфавите, но это не точно.. 
-int* sizeOfsentence;
-int status = 1; //Статус симметрии 
-int sizeOfword = 0; //Кол-во букв в слове 
-int countOfsentences = 0; //Кол-во предложений 
-int countOfwords = 0; //Кол-во симметричных слов 
-// Текст для отладки тенет овыф выа ывалж ыар sefsdkj fdjlksjdf ds d 2323 9ir023r0 fj9fJH 0E0(EFJ)(ef0E*)F(^F*&DT FG D*S&FDS&*D 3333 #$$# Дед А Б В ЛОЛ 
-
-int isAlpha(unsigned char);
-void addLetter(char);
-void shutDown();
-
-int main() {
-	system("chcp 1251");
-	setlocale(LC_ALL, "RU");
-	words = (char*)calloc(len, sizeof(char));
-
-	printf("Enter count of sentences:");
-	scanf_s("%d", &countOfsentences);
-	rewind(stdin);
-	sizeOfsentence = (int*)calloc(countOfsentences, sizeof(int));
-	sentences = (char**)calloc(countOfsentences, sizeof(char*));
-
-	for (int s = 0; s < countOfsentences; ++s) {
-		printf("Enter size of sentence %d:", s + 1);
-		scanf_s("%d", &sizeOfsentence[s]);
-		rewind(stdin);
-
-		sentences[s] = (char*)calloc(++sizeOfsentence[s], sizeof(char));
-		printf("Enter sentence:");
-		fgets(sentences[s], sizeOfsentence[s], stdin);
-		rewind(stdin);
-
-		for (int z = 0; z < sizeOfsentence[s]; ++z) {
-			sizeOfword = 0;
-			status = 1; //Сброс значений по умолчанию 
-
-			if (isAlpha(sentences[s][z])) { //Если буква, то считаем размер слова 
-				if (z == 0) { //Страшные проверки 
-					for (int i = z; i < sizeOfsentence[s]; ++i) {
-						if (!isAlpha(sentences[s][i])) break;
-						sizeOfword++;
-					}
-					if (sizeOfword <= sizeOfsentence[s] - 2) {
-						if (sentences[s][z + sizeOfword] != ' ') {
-							continue;
-						}
-					}
-				}
-				else {
-					if (sentences[s][z - 1] == ' ') {
-						for (int i = z; i < sizeOfsentence[s]; ++i) {
-							if (!isAlpha(sentences[s][i])) break;
-							sizeOfword++;
-						}
-					}
-					if (sentences[s][z - 1] == ' ' && sentences[s][z + sizeOfword] != ' ') {
-						if (sentences[s][z + sizeOfword] != '\n' && (z + sizeOfword < sizeOfsentence[s] - 1)) {
-							continue;
-						}
-					}
-				}
-			}
-			if (sizeOfword > 0) {
-				int j = z + sizeOfword - 1; //Последняя буква в слове 
-				for (int i = z; i < z + sizeOfword; ++i) { //Проверка на симметричность 
-					if (sentences[s][i] != sentences[s][j] && (int)sentences[s][i] + 32 != (int)sentences[s][j] && (int)sentences[s][i] != (int)sentences[s][j] + 32) { //Проверка для заглавных 
-						status = 0;
-						break;
-					}
-					j--;
-				}
-				z += sizeOfword; //Главный цикл(идёт по предложению) пропускает проверенное слово 
-
-				if (status) { //Копируем слово циклом в другой массив(words) и выводим его 
-					printf("( ");
-					for (int i = z - sizeOfword; i < z; ++i) {
-						addLetter(sentences[s][i]);
-						printf("%c", sentences[s][i]);
-					}
-					addLetter(' '); //Добавляем пробел в массив words для читаемости 
-					countOfwords++; //Добавляем +1 к кол-ву симметричных слов 
-					printf(" ) - Слово симметрично\n");
-				}
-				else {
-					printf("Слово не симметрично\n");
-				}
-			}
-		}
-	}
-
-	printf("\nМассив симметричных слов во всех предложениях - ( ");
-	for (int i = 0; i < len; ++i) {
-		printf("%c", words[i]);
-	}
-	printf(") - Количество: %d", countOfwords);
-
-	shutDown();
-	return 0;
-}
-
-int isAlpha(unsigned char sym) { //Функция для проверки на русские и английские буквы 
-	if (((int)sym >= 65 && (int)sym <= 90) || ((int)sym >= 97 && (int)sym <= 122)) return 1;
-	if (((int)sym >= 192 && (int)sym <= 255)) return 1;
-	return 0;
-}
-
-void addLetter(char sym) { //Функция для добавления символа в массив words 
-	char* tmp = (char*)realloc(words, ++len * sizeof(char));
-	if (tmp) {
-		words = tmp; //Увеличиваем размер массива words 
-		free(tmp);
-	}
-	else {
-		printf("Realloc error");
-		free(tmp);
-		shutDown();
-	}
-	words[num] = sym;
-	num++;
-
-}
-
-void shutDown() { //Освобождение памяти (вынесена в функцию для экстренного завершения программы в случае ошибок выделения памяти) 
-	free(words);
-	free(sizeOfsentence);
-	for (int i = 0; i < countOfsentences; ++i) {
-		free(sentences[i]);
-	}
-	free(sentences);
-}*/
